@@ -4,24 +4,29 @@ import {nanoid} from "nanoid";
 import {IApiCountries} from "../../types";
 import Country from "../../components/Country/Country";
 import CountryInfo from "../../components/CountryInfo/CountryInfo";
+import Loader from "../../components/Loader/Loader";
 
 const URL = 'https://restcountries.com/v2/all?fields=alpha3Code,name';
 
 const Countries = () => {
     const [countries, setCountries] = useState<IApiCountries[]>([]);
     const [alpha3Code, setAlpha3Code] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
         fetchData().catch(e => console.log(e));
     }, []);
 
     const fetchData = async () => {
+        setLoading(true);
         const response = await axios.get<IApiCountries[]>(URL);
         setCountries(response.data);
+        setLoading(false);
     }
 
     return (
         <div className="countries pt-4">
+            {loading && <Loader />}
             <div className="row">
                 <div className="list-of-countries col-4">
                     <ul>
