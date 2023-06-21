@@ -86,7 +86,7 @@ const CountryInfo: React.FC<IProps> = ({countryCode}) => {
                             <img className="mt-5" src={countryInfo.flag} alt={countryInfo.name}/>
                         </div>
                     </div>
-                    : <h1>Please select a country to receive country information</h1>
+                    : <h1 className="msg">Please select a country to receive country detailed information</h1>
             }
         </>
     );

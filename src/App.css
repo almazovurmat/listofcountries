@@ -32,3 +32,8 @@
   width: 150px;
   border: 1px solid #777;
 }
+
+.msg {
+  padding-left: 30px;
+  font-size: 28px;
+}
